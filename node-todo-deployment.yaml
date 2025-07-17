@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-todo
+  template:
+    metadata:
+      labels:
+        app: node-todo
+    spec:
+      containers:
+        - name: node-todo
+          image: node-todo-observable:latest
+          imagePullPolicy: Never  # 👈 add this line
+          ports:
+            - containerPort: 8000
+            - containerPort: 9464
